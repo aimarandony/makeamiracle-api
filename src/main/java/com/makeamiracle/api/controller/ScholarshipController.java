@@ -5,9 +5,7 @@ import com.makeamiracle.api.service.ScholarshipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +29,20 @@ public class ScholarshipController {
     @GetMapping("/scholarships/top")
     public ResponseEntity<List<Scholarship>> findTop5(){
         return ResponseEntity.status(HttpStatus.OK).body(scholarshipService.findTop5());
+    }
+
+    @PostMapping("/scholarships")
+    public ResponseEntity<Scholarship> create(@RequestBody Scholarship scholarship){
+        return ResponseEntity.status(HttpStatus.OK).body(scholarshipService.create(scholarship));
+    }
+
+    @PatchMapping("/scholarships/{id}")
+    public ResponseEntity<Scholarship> update(@RequestBody Scholarship scholarship, @PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(scholarshipService.update(scholarship, id));
+    }
+
+    @PatchMapping("/scholarships/finalize/{id}")
+    public ResponseEntity<Scholarship> finalize(@RequestBody Scholarship scholarship, @PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(scholarshipService.finalize(scholarship, id));
     }
 }
