@@ -44,6 +44,7 @@ public class SchoolService {
         School updSchool = schoolRepository.getOne(id);
         if (school.getName() != null) updSchool.setName(school.getName());
         if (school.getSchoolType() != null) updSchool.setSchoolType(school.getSchoolType());
+        updSchool.setDegrees(school.getDegrees());
         schoolRepository.save(updSchool);
         return updSchool;
     }

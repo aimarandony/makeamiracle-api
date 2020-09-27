@@ -1,5 +1,6 @@
 package com.makeamiracle.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,8 @@ public class User {
     private String name;
     private String lastName;
     private String username;
+//    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private Boolean status;
 

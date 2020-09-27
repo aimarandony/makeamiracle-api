@@ -26,4 +26,8 @@ public class SchoolTypeService {
         if (!schoolTypeRepository.existsById(id)) throw new NotFoundException("SchoolType does not exist with id " + id);
         return schoolTypeRepository.getOne(id);
     }
+
+    public SchoolType create(SchoolType schoolType){
+        return schoolTypeRepository.save(schoolType);
+    }
 }

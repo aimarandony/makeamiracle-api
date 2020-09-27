@@ -3,6 +3,7 @@ package com.makeamiracle.api.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -12,6 +13,8 @@ public class School {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private SchoolType schoolType;
+    @ManyToMany
+    private List<Degree> degrees;
 }

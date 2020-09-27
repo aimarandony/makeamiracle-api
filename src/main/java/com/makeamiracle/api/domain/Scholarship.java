@@ -1,5 +1,6 @@
 package com.makeamiracle.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,13 +19,14 @@ public class Scholarship {
     private LocalDateTime createdAt;
     private LocalDate finishedDate;
     private String status;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Student student;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Sponsor sponsor;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JsonIgnoreProperties({"degrees", "hibernateLazyInitializer", "handler"})
     private School school;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Degree degree;
 
     @PrePersist

@@ -1,5 +1,6 @@
 package com.makeamiracle.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,8 +12,9 @@ public class SchoolDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Degree degree;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JsonIgnoreProperties({"degrees", "hibernateLazyInitializer", "handler"})
     private School school;
+    @ManyToOne
+    private Degree degree;
 }
