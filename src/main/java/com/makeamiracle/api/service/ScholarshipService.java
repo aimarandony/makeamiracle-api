@@ -22,7 +22,7 @@ public class ScholarshipService {
     }
 
     public Long count() {
-        return scholarshipRepository.countScholarshipsByStatusEquals("ACTIVO");
+        return scholarshipRepository.count();
     }
 
     public Scholarship create(Scholarship scholarship){
@@ -51,7 +51,7 @@ public class ScholarshipService {
     }
 
     public List<Scholarship> findTop5(){
-        return scholarshipRepository.findTop5ByStatusEqualsOrderByFinishedDateDesc("CULMINADO");
+        return scholarshipRepository.findTop5ByStatusOrderByFinishedDateDesc("CULMINADO");
     }
 
 }

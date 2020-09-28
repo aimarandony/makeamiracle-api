@@ -8,7 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ScholarshipRepository extends JpaRepository<Scholarship, Long> {
-
-    Long countScholarshipsByStatusEquals(String status);
-    List<Scholarship> findTop5ByStatusEqualsOrderByFinishedDateDesc(String status);
+    List<Scholarship> findTop5ByStatusOrderByFinishedDateDesc(String status);
 }
